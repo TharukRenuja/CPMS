@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <Description></Description>
+    <Copyright></Copyright>
+    <PackageIcon></PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AdminView\AStatus.cs" />
+    <Compile Update="AdminView\Components\EditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SGuardView\Components\EditCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SGuardView\Components\AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AdminView\Components\AddEmployee.cs" />
+    <Compile Update="SGuardView\Components\GetInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SGuardView\Components\ReserveView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SGuardView\Components\VehicleReserveEMP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SGuardView\Components\VehicleReserveCUS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AdminView\Invoices.cs" />
+    <Compile Update="AdminView\Customers.cs" />
+    <Compile Update="AdminView\Employees.cs" />
+    <Compile Update="AdminView\Dashboard.cs" />
+    <Compile Update="LoginView\SGuardLogin.cs" />
+    <Compile Update="LoginView\AdminLogin.cs" />
+    <Compile Update="NormalView\Contact.cs" />
+    <Compile Update="NormalView\About.cs" />
+    <Compile Update="NormalView\Status.cs" />
+    <Compile Update="NormalView\Login.cs" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="SGuardView\GStatus.cs" />
+    <Compile Update="SGuardView\GCustomers.cs" />
+    <Compile Update="SGuardView\GDashboard.cs" />
+    <Compile Update="SGuardView\Vehicles.cs" />
+    <Compile Update="SGuardView\GInvoices.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
