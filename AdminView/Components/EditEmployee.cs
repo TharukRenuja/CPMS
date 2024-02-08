@@ -30,36 +30,29 @@ namespace CPMS
         private void DashboardBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GDashboard dashboard = new GDashboard();
+            Dashboard dashboard = new Dashboard();
             dashboard.Show();
         }
 
         private void CustomersBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GCustomers customers = new GCustomers();
+            Customers customers = new Customers();
             customers.Show();
         }
 
         private void InvoicesBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GInvoices invoices = new GInvoices();
+            Invoices invoices = new Invoices();
             invoices.Show();
         }
 
         private void StatusBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GStatus aStatus = new GStatus();
+            AStatus aStatus = new AStatus();
             aStatus.Show();
-        }
-
-        private void VehiclesBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Vehicles vehicles = new Vehicles();
-            vehicles.Show();
         }
 
         private void B2CUSBtn_Click(object sender, EventArgs e)
@@ -115,7 +108,8 @@ namespace CPMS
             {
                 connection.Open();
 
-                string query = "SELECT ID FROM Employee";
+                string query = @"SELECT ID FROM Employee
+                                 ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) ASC";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -132,6 +126,39 @@ namespace CPMS
         private void EditEmpBtn_Click(object sender, EventArgs e)
         {
             SaveChanges();
+        }
+
+        private void FetchInfoBtn_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT ID, Name, Email, Contact, VLicense FROM Employee WHERE ID = @ID";
+
+            using (SqlConnection connection = new SqlConnection(DBString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ID", PickCus.Text);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    string name = reader["Name"].ToString();
+                    string email = reader["Email"].ToString();
+                    string contact = reader["Contact"].ToString();
+                    string license = reader["VLicense"].ToString();
+
+                    NameTxt.Text = name; 
+                    EmailTxt.Text = email;
+                    ContactNTxt.Text = contact;
+                    LicenseTxt.Text = license;
+                }
+                else
+                {
+                    MessageBox.Show("Employee not found.");
+                }
+
+                reader.Close();
+            }
         }
     }
 }

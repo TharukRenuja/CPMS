@@ -68,7 +68,6 @@
             pictureBox5 = new PictureBox();
             label21 = new Label();
             label22 = new Label();
-            GetVLTXT = new TextBox();
             GenInvoiceBtn = new Button();
             label23 = new Label();
             datePicker = new DateTimePicker();
@@ -92,6 +91,8 @@
             printPreview = new PrintPreviewDialog();
             printDocument = new System.Drawing.Printing.PrintDocument();
             PrintBtn = new Button();
+            GetVLTXT = new ComboBox();
+            B2ResBtn = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FTitle).BeginInit();
@@ -582,15 +583,6 @@
             label22.TabIndex = 9;
             label22.Text = "Enter Vehicle License No :";
             // 
-            // GetVLTXT
-            // 
-            GetVLTXT.BorderStyle = BorderStyle.None;
-            GetVLTXT.Font = new Font("Segoe UI", 12F);
-            GetVLTXT.Location = new Point(598, 222);
-            GetVLTXT.Name = "GetVLTXT";
-            GetVLTXT.Size = new Size(172, 22);
-            GetVLTXT.TabIndex = 10;
-            // 
             // GenInvoiceBtn
             // 
             GenInvoiceBtn.BackColor = Color.Transparent;
@@ -848,12 +840,42 @@
             PrintBtn.UseVisualStyleBackColor = false;
             PrintBtn.Click += PrintBtn_Click;
             // 
+            // GetVLTXT
+            // 
+            GetVLTXT.FlatStyle = FlatStyle.Flat;
+            GetVLTXT.Font = new Font("Segoe UI", 10F);
+            GetVLTXT.FormattingEnabled = true;
+            GetVLTXT.Location = new Point(598, 220);
+            GetVLTXT.Name = "GetVLTXT";
+            GetVLTXT.Size = new Size(172, 25);
+            GetVLTXT.TabIndex = 14;
+            // 
+            // B2ResBtn
+            // 
+            B2ResBtn.BackColor = Color.Transparent;
+            B2ResBtn.BackgroundImage = (Image)resources.GetObject("B2ResBtn.BackgroundImage");
+            B2ResBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            B2ResBtn.Cursor = Cursors.Hand;
+            B2ResBtn.FlatAppearance.BorderSize = 0;
+            B2ResBtn.FlatStyle = FlatStyle.Flat;
+            B2ResBtn.Font = new Font("Segoe UI", 9.75F);
+            B2ResBtn.Location = new Point(349, 40);
+            B2ResBtn.Name = "B2ResBtn";
+            B2ResBtn.Size = new Size(90, 30);
+            B2ResBtn.TabIndex = 28;
+            B2ResBtn.Text = "Back   ";
+            B2ResBtn.TextAlign = ContentAlignment.MiddleRight;
+            B2ResBtn.UseVisualStyleBackColor = false;
+            B2ResBtn.Click += B2ResBtn_Click;
+            // 
             // GetInvoice
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(253, 247, 228);
             ClientSize = new Size(1264, 681);
+            Controls.Add(B2ResBtn);
+            Controls.Add(GetVLTXT);
             Controls.Add(Title);
             Controls.Add(label38);
             Controls.Add(timePicker);
@@ -863,7 +885,6 @@
             Controls.Add(SduTXT);
             Controls.Add(label24);
             Controls.Add(SVLTXT);
-            Controls.Add(GetVLTXT);
             Controls.Add(SToTXT);
             Controls.Add(label23);
             Controls.Add(SFrmTXT);
@@ -943,7 +964,6 @@
         private PictureBox pictureBox5;
         private Label label21;
         private Label label22;
-        private TextBox GetVLTXT;
         private Button GenInvoiceBtn;
         private Label label23;
         private DateTimePicker datePicker;
@@ -967,5 +987,7 @@
         private PrintPreviewDialog printPreview;
         private System.Drawing.Printing.PrintDocument printDocument;
         private Button PrintBtn;
+        private ComboBox GetVLTXT;
+        private Button B2ResBtn;
     }
 }

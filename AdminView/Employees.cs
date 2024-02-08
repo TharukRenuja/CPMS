@@ -146,7 +146,8 @@ namespace CPMS
             {
                 connection.Open();
 
-                string query = "SELECT ID, Name, Email, Contact, VLicense FROM Employee";
+                string query = @"SELECT ID, Name, Email, Contact, VLicense FROM Employee
+                                 ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) ASC";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
 
                 adapter.Fill(dataTable);

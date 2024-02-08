@@ -20,6 +20,7 @@ namespace CPMS
         {
             InitializeComponent();
             LoadAvailableParkingSpots();
+            LoadVLicense();
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -75,20 +76,6 @@ namespace CPMS
             ReserveParkingSpot(contactNo);
         }
 
-        private string GetLastCustomerID()
-        {
-            string query = "SELECT TOP 1 ID FROM Customer ORDER BY ID DESC";
-
-            using (SqlConnection connection = new SqlConnection(DBString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
-                object result = command.ExecuteScalar();
-
-                return result == null ? "CUS0" : result.ToString();
-            }
-        }
-
         private string GetLastVehicleID()
         {
             string query = "SELECT TOP 1 ID FROM Vehicle ORDER BY ID DESC";
@@ -103,15 +90,6 @@ namespace CPMS
             }
         }
 
-        private string GenerateNextCustomerID()
-        {
-            string lastCustomerID = GetLastCustomerID();
-
-            int lastIdNumber = int.Parse(lastCustomerID.Substring(3));
-            int nextIdNumber = lastIdNumber + 1;
-            return "CUS" + nextIdNumber.ToString();
-        }
-
         private string GenerateNextVehicleID()
         {
             string lastVehicleID = GetLastVehicleID();
@@ -121,6 +99,29 @@ namespace CPMS
             return "VNO" + nextIdNumber.ToString();
         }
 
+        private void LoadVLicense()
+        {
+            using (SqlConnection connection = new SqlConnection(DBString))
+            {
+                connection.Open();
+
+                string query = "SELECT VLicense FROM Employee";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string contact = reader.GetString(0);
+                        LicenseTxt.Items.Add(contact);
+                    }
+                }
+
+                LicenseTxt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                LicenseTxt.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
+        }
+
         private void ReserveParkingSpot(string vLicense)
         {
             using (SqlConnection connection = new SqlConnection(DBString))
@@ -128,18 +129,18 @@ namespace CPMS
                 connection.Open();
 
                 string checkContactQuery = "SELECT COUNT(*) FROM Employee WHERE VLicense = @VLicense";
-                SqlCommand checkContactCommand = new SqlCommand(checkContactQuery, connection);
-                checkContactCommand.Parameters.AddWithValue("@VLicense", vLicense);
+                SqlCommand checkContactCMD = new SqlCommand(checkContactQuery, connection);
+                checkContactCMD.Parameters.AddWithValue("@VLicense", vLicense);
 
-                int contactCount = (int)checkContactCommand.ExecuteScalar();
+                int contactCount = (int)checkContactCMD.ExecuteScalar();
 
                 if (contactCount > 0)
                 {
-                    string getCustomerDetailsQuery = "SELECT ID, Contact FROM Employee WHERE VLicense = @VLicense";
-                    SqlCommand getCustomerDetailsCommand = new SqlCommand(getCustomerDetailsQuery, connection);
-                    getCustomerDetailsCommand.Parameters.AddWithValue("@VLicense", vLicense);
+                    string getCustomerQuery = "SELECT ID, Contact FROM Employee WHERE VLicense = @VLicense";
+                    SqlCommand getCustomerCMD = new SqlCommand(getCustomerQuery, connection);
+                    getCustomerCMD.Parameters.AddWithValue("@VLicense", vLicense);
 
-                    SqlDataReader reader = getCustomerDetailsCommand.ExecuteReader();
+                    SqlDataReader reader = getCustomerCMD.ExecuteReader();
 
                     if (reader.Read())
                     {
@@ -148,28 +149,24 @@ namespace CPMS
 
                         reader.Close();
 
-                        // Insert data into the Vehicle table
                         string insertVehicleQuery = "INSERT INTO Vehicle (ID, VLicense, OwnerID, ContactNo, InTime) VALUES (@ID, @VLicense, @OwnerID, @ContactNo, @InTime)";
-                        SqlCommand insertVehicleCommand = new SqlCommand(insertVehicleQuery, connection);
-                        insertVehicleCommand.Parameters.AddWithValue("@ID", GenerateNextVehicleID());
-                        insertVehicleCommand.Parameters.AddWithValue("@VLicense", vLicense);
-                        insertVehicleCommand.Parameters.AddWithValue("@OwnerID", customerID);
-                        insertVehicleCommand.Parameters.AddWithValue("@ContactNo", contactNo);
+                        SqlCommand insertVehicleCMD = new SqlCommand(insertVehicleQuery, connection);
+                        insertVehicleCMD.Parameters.AddWithValue("@ID", GenerateNextVehicleID());
+                        insertVehicleCMD.Parameters.AddWithValue("@VLicense", vLicense);
+                        insertVehicleCMD.Parameters.AddWithValue("@OwnerID", customerID);
+                        insertVehicleCMD.Parameters.AddWithValue("@ContactNo", contactNo);
+                        insertVehicleCMD.Parameters.AddWithValue("@InTime", PickTime.Value.ToString("HH:mm:ss"));
 
-                        // Format the DateTime from PickTime for the InTime column
-                        insertVehicleCommand.Parameters.AddWithValue("@InTime", PickTime.Value.ToString("HH:mm:ss"));
+                        insertVehicleCMD.ExecuteNonQuery();
 
-                        insertVehicleCommand.ExecuteNonQuery();
+                        string getVehicleQuery = "SELECT ID FROM Vehicle WHERE OwnerID = @OwnerID AND ContactNo = @ContactNo";
+                        SqlCommand getVehicleCMD = new SqlCommand(getVehicleQuery, connection);
+                        getVehicleCMD.Parameters.AddWithValue("@OwnerID", customerID);
+                        getVehicleCMD.Parameters.AddWithValue("@ContactNo", contactNo);
 
-                        // Retrieve the newly inserted Vehicle ID
-                        string getNewVehicleIDQuery = "SELECT ID FROM Vehicle WHERE OwnerID = @OwnerID AND ContactNo = @ContactNo";
-                        SqlCommand getNewVehicleIDCommand = new SqlCommand(getNewVehicleIDQuery, connection);
-                        getNewVehicleIDCommand.Parameters.AddWithValue("@OwnerID", customerID);
-                        getNewVehicleIDCommand.Parameters.AddWithValue("@ContactNo", contactNo);
+                        string vehicleID = getVehicleCMD.ExecuteScalar().ToString();
 
-                        string vehicleID = getNewVehicleIDCommand.ExecuteScalar().ToString();
-
-                        ReserveParkingSpotForCustomer(vehicleID);
+                        ReserveSpotEMP(vehicleID);
 
                         MessageBox.Show("Parking spot reserved.");
                         this.Hide();
@@ -191,7 +188,8 @@ namespace CPMS
             {
                 connection.Open();
 
-                string loadSpotsQuery = "SELECT ID FROM Status WHERE Status = 0 AND ID LIKE 'E-SPOT%'";
+                string loadSpotsQuery = @"SELECT ID FROM Status WHERE Status = 0 AND ID LIKE 'E-SPOT%'
+                                          ORDER BY CAST(SUBSTRING(ID, 7, LEN(ID)) AS INT) ASC";
                 SqlDataAdapter adapter = new SqlDataAdapter(loadSpotsQuery, connection);
 
                 DataTable spotsTable = new DataTable();
@@ -203,7 +201,7 @@ namespace CPMS
             }
         }
 
-        private void ReserveParkingSpotForCustomer(string vehicleID)
+        private void ReserveSpotEMP(string vehicleID)
         {
             string selectedSpot = PickSpot.Text;
 
@@ -215,7 +213,6 @@ namespace CPMS
 
                     object vehicleIDParameter = string.IsNullOrEmpty(vehicleID) ? DBNull.Value : (object)vehicleID;
 
-                    // Check if same ID already exists in the Status
                     string checkStatusQuery = "SELECT COUNT(*) FROM Status WHERE ID = @ID";
                     SqlCommand checkStatusCommand = new SqlCommand(checkStatusQuery, connection);
                     checkStatusCommand.Parameters.Add("@ID", SqlDbType.VarChar, 10).Value = selectedSpot;
@@ -224,7 +221,6 @@ namespace CPMS
 
                     if (existingStatusCount > 0)
                     {
-                        // Update the existing record
                         string updateStatusQuery = "UPDATE Status SET Status = 1, VehicleID = @VehicleID WHERE ID = @ID";
                         SqlCommand updateStatusCommand = new SqlCommand(updateStatusQuery, connection);
                         updateStatusCommand.Parameters.Add("@VehicleID", SqlDbType.VarChar, 10).Value = vehicleIDParameter;
@@ -233,7 +229,6 @@ namespace CPMS
                     }
                     else
                     {
-                        // Insert a new record
                         string insertStatusQuery = "INSERT INTO Status (ID, Status, VehicleID) VALUES (@ID, 1, @VehicleID)";
                         SqlCommand insertStatusCommand = new SqlCommand(insertStatusQuery, connection);
                         insertStatusCommand.Parameters.Add("@VehicleID", SqlDbType.VarChar, 10).Value = vehicleIDParameter;

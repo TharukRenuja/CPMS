@@ -54,6 +54,7 @@
             LicenseTxt = new TextBox();
             label2 = new Label();
             PickCus = new ComboBox();
+            FetchInfoBtn = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FTitle).BeginInit();
@@ -269,7 +270,7 @@
             // 
             NameTxt.BorderStyle = BorderStyle.None;
             NameTxt.Font = new Font("Segoe UI", 14.25F);
-            NameTxt.Location = new Point(898, 331);
+            NameTxt.Location = new Point(898, 347);
             NameTxt.Name = "NameTxt";
             NameTxt.Size = new Size(195, 26);
             NameTxt.TabIndex = 16;
@@ -328,7 +329,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(250, 238, 209);
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label1.Location = new Point(824, 331);
+            label1.Location = new Point(824, 347);
             label1.Name = "label1";
             label1.Size = new Size(74, 25);
             label1.TabIndex = 18;
@@ -339,7 +340,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.FromArgb(250, 238, 209);
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label4.Location = new Point(824, 371);
+            label4.Location = new Point(824, 387);
             label4.Name = "label4";
             label4.Size = new Size(91, 25);
             label4.TabIndex = 19;
@@ -350,7 +351,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.FromArgb(250, 238, 209);
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label5.Location = new Point(824, 412);
+            label5.Location = new Point(824, 428);
             label5.Name = "label5";
             label5.Size = new Size(118, 25);
             label5.TabIndex = 19;
@@ -360,7 +361,7 @@
             // 
             ContactNTxt.BorderStyle = BorderStyle.None;
             ContactNTxt.Font = new Font("Segoe UI", 14.25F);
-            ContactNTxt.Location = new Point(921, 370);
+            ContactNTxt.Location = new Point(921, 386);
             ContactNTxt.Name = "ContactNTxt";
             ContactNTxt.Size = new Size(172, 26);
             ContactNTxt.TabIndex = 16;
@@ -369,7 +370,7 @@
             // 
             LicenseTxt.BorderStyle = BorderStyle.None;
             LicenseTxt.Font = new Font("Segoe UI", 14.25F);
-            LicenseTxt.Location = new Point(948, 411);
+            LicenseTxt.Location = new Point(948, 427);
             LicenseTxt.Name = "LicenseTxt";
             LicenseTxt.Size = new Size(145, 26);
             LicenseTxt.TabIndex = 16;
@@ -379,7 +380,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(250, 238, 209);
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label2.Location = new Point(824, 293);
+            label2.Location = new Point(824, 271);
             label2.Name = "label2";
             label2.Size = new Size(133, 25);
             label2.TabIndex = 18;
@@ -390,10 +391,24 @@
             PickCus.FlatStyle = FlatStyle.Flat;
             PickCus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PickCus.FormattingEnabled = true;
-            PickCus.Location = new Point(970, 290);
+            PickCus.Location = new Point(970, 268);
             PickCus.Name = "PickCus";
             PickCus.Size = new Size(123, 29);
             PickCus.TabIndex = 32;
+            // 
+            // FetchInfoBtn
+            // 
+            FetchInfoBtn.BackgroundImage = (Image)resources.GetObject("FetchInfoBtn.BackgroundImage");
+            FetchInfoBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            FetchInfoBtn.FlatAppearance.BorderSize = 0;
+            FetchInfoBtn.FlatStyle = FlatStyle.Flat;
+            FetchInfoBtn.Location = new Point(921, 306);
+            FetchInfoBtn.Name = "FetchInfoBtn";
+            FetchInfoBtn.Size = new Size(103, 33);
+            FetchInfoBtn.TabIndex = 34;
+            FetchInfoBtn.Text = "    Fetch";
+            FetchInfoBtn.UseVisualStyleBackColor = true;
+            FetchInfoBtn.Click += FetchInfoBtn_Click;
             // 
             // EditCustomer
             // 
@@ -401,6 +416,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(253, 247, 228);
             ClientSize = new Size(1264, 681);
+            Controls.Add(FetchInfoBtn);
             Controls.Add(PickCus);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -458,5 +474,6 @@
         private Button DashboardBtn;
         private Label label2;
         private ComboBox PickCus;
+        private Button FetchInfoBtn;
     }
 }

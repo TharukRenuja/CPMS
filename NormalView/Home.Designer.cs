@@ -47,6 +47,7 @@
             label7 = new Label();
             label8 = new Label();
             pictureBox2 = new PictureBox();
+            ExitBtn = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FTitle).BeginInit();
@@ -56,6 +57,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(222, 208, 182);
+            panel1.Controls.Add(ExitBtn);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(AboutBtn);
             panel1.Controls.Add(ContactBtn);
@@ -289,6 +291,25 @@
             pictureBox2.TabIndex = 8;
             pictureBox2.TabStop = false;
             // 
+            // ExitBtn
+            // 
+            ExitBtn.BackColor = Color.Transparent;
+            ExitBtn.BackgroundImage = (Image)resources.GetObject("ExitBtn.BackgroundImage");
+            ExitBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            ExitBtn.CausesValidation = false;
+            ExitBtn.Cursor = Cursors.Hand;
+            ExitBtn.FlatAppearance.BorderSize = 0;
+            ExitBtn.FlatStyle = FlatStyle.Flat;
+            ExitBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ExitBtn.ForeColor = Color.White;
+            ExitBtn.Location = new Point(20, 580);
+            ExitBtn.Name = "ExitBtn";
+            ExitBtn.Size = new Size(260, 60);
+            ExitBtn.TabIndex = 11;
+            ExitBtn.Text = "Exit";
+            ExitBtn.UseVisualStyleBackColor = false;
+            ExitBtn.Click += ExitBtn_Click;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -339,5 +360,6 @@
         private Label label7;
         private Label label8;
         private PictureBox pictureBox2;
+        private Button ExitBtn;
     }
 }

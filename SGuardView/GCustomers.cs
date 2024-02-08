@@ -146,7 +146,8 @@ namespace CPMS
             {
                 connection.Open();
 
-                string query = "SELECT ID, Name, Contact, VLicense FROM Customer";
+                string query = @"SELECT ID, Name, Contact, VLicense FROM Customer
+                                 ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) ASC";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
 
                 adapter.Fill(dataTable);
@@ -154,6 +155,7 @@ namespace CPMS
 
             return dataTable;
         }
+
 
         private void EditCusBtn_Click(object sender, EventArgs e)
         {

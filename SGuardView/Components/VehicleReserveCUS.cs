@@ -20,6 +20,7 @@ namespace CPMS
         {
             InitializeComponent();
             LoadAvailableParkingSpots();
+            LoadCustomers();
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -77,7 +78,10 @@ namespace CPMS
 
         private string GetLastCustomerID()
         {
-            string query = "SELECT TOP 1 ID FROM Customer ORDER BY ID DESC";
+            string query = @"SELECT TOP 1 ID
+                             FROM Customer
+                             ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) DESC
+                            ";
 
             using (SqlConnection connection = new SqlConnection(DBString))
             {
@@ -91,7 +95,10 @@ namespace CPMS
 
         private string GetLastVehicleID()
         {
-            string query = "SELECT TOP 1 ID FROM Vehicle ORDER BY ID DESC";
+            string query = @"SELECT TOP 1 ID
+                             FROM Vehicle
+                             ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) DESC
+                            ";
 
             using (SqlConnection connection = new SqlConnection(DBString))
             {
@@ -239,13 +246,37 @@ namespace CPMS
             }
         }
 
+        private void LoadCustomers()
+        {
+            using (SqlConnection connection = new SqlConnection(DBString))
+            {
+                connection.Open();
+
+                string query = "SELECT Contact FROM Customer";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int contact = (int)reader["Contact"];
+                        ContactNTxt.Items.Add(contact);
+                    }
+                }
+
+                ContactNTxt.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                ContactNTxt.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
+        }
+
         private void LoadAvailableParkingSpots()
         {
             using (SqlConnection connection = new SqlConnection(DBString))
             {
                 connection.Open();
 
-                string loadSpotsQuery = "SELECT ID FROM Status WHERE Status = 0 AND ID LIKE 'C-SPOT%'";
+                string loadSpotsQuery = @"SELECT ID FROM Status WHERE Status = 0 AND ID LIKE 'C-SPOT%'
+                                          ORDER BY CAST(SUBSTRING(ID, 7, LEN(ID)) AS INT) ASC";
                 SqlDataAdapter adapter = new SqlDataAdapter(loadSpotsQuery, connection);
 
                 DataTable spotsTable = new DataTable();

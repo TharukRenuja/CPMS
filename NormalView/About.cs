@@ -49,5 +49,10 @@ namespace CPMS
             Contact contact = new Contact();
             contact.Show();
         }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

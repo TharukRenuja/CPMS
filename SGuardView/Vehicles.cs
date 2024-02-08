@@ -183,7 +183,7 @@ namespace CPMS
                                         END AS OwnerName 
                                 FROM Vehicle 
                                 LEFT JOIN Employee ON Vehicle.OwnerID = Employee.ID 
-                                LEFT JOIN Customer ON Vehicle.OwnerID = Customer.ID;
+                                LEFT JOIN Customer ON Vehicle.OwnerID = Customer.ID
                             ";
 
             using (SqlConnection connection = new SqlConnection(DBString))

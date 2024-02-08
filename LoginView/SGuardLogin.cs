@@ -20,6 +20,7 @@ namespace CPMS
         private void SGuardLogin_Load(object sender, EventArgs e)
         {
             MaximizeBox = false;
+            HidePWDBtn.Visible = false;
         }
 
         private void HomeBtn_Click(object sender, EventArgs e)
@@ -73,6 +74,20 @@ namespace CPMS
             this.Hide();
             Login login = new Login();
             login.Show();
+        }
+
+        private void ShowPWDBtn_Click(object sender, EventArgs e)
+        {
+            PWDTxt.UseSystemPasswordChar = false;
+            ShowPWDBtn.Visible = false;
+            HidePWDBtn.Visible = true;
+        }
+
+        private void HidePWDBtn_Click(object sender, EventArgs e)
+        {
+            PWDTxt.UseSystemPasswordChar = true;
+            HidePWDBtn.Visible = false;
+            ShowPWDBtn.Visible = true;
         }
     }
 }

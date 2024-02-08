@@ -64,7 +64,6 @@ namespace CPMS
 
         private void ConfigureDataGridView()
         {
-            // DataGridView controls
             StatusDView.AutoGenerateColumns = false;
             StatusDView.ReadOnly = true;
             StatusDView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -133,6 +132,7 @@ namespace CPMS
                                     FROM 
                                         Status
                                         LEFT JOIN Vehicle ON Status.VehicleID = Vehicle.ID
+                                    ORDER BY CAST(SUBSTRING(Status.ID, 7, LEN(Status.ID)) AS INT) ASC
                                 ";
 
                 //"SELECT ID, VehicleID, Status FROM Status";

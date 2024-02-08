@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditEmployee));
             panel1 = new Panel();
-            LogOutBtn = new Button();
-            InfoTXT = new Label();
-            LogoTXT = new Label();
-            pictureBox1 = new PictureBox();
             StatusBtn = new Button();
+            LogOutBtn = new Button();
             InvoicesBtn = new Button();
+            InfoTXT = new Label();
             CustomersBtn = new Button();
-            VehiclesBtn = new Button();
+            LogoTXT = new Label();
+            EmployeesBtn = new Button();
+            pictureBox1 = new PictureBox();
             DashboardBtn = new Button();
             FTitleTXT = new Label();
             FTitle = new PictureBox();
@@ -56,6 +56,7 @@
             PickCus = new ComboBox();
             EmailTxt = new TextBox();
             label6 = new Label();
+            FetchInfoBtn = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FTitle).BeginInit();
@@ -65,19 +66,37 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(222, 208, 182);
-            panel1.Controls.Add(LogOutBtn);
-            panel1.Controls.Add(InfoTXT);
-            panel1.Controls.Add(LogoTXT);
-            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(StatusBtn);
+            panel1.Controls.Add(LogOutBtn);
             panel1.Controls.Add(InvoicesBtn);
+            panel1.Controls.Add(InfoTXT);
             panel1.Controls.Add(CustomersBtn);
-            panel1.Controls.Add(VehiclesBtn);
+            panel1.Controls.Add(LogoTXT);
+            panel1.Controls.Add(EmployeesBtn);
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(DashboardBtn);
             panel1.Location = new Point(1, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(300, 680);
             panel1.TabIndex = 0;
+            // 
+            // StatusBtn
+            // 
+            StatusBtn.BackColor = Color.Transparent;
+            StatusBtn.BackgroundImage = (Image)resources.GetObject("StatusBtn.BackgroundImage");
+            StatusBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            StatusBtn.CausesValidation = false;
+            StatusBtn.Cursor = Cursors.Hand;
+            StatusBtn.FlatAppearance.BorderSize = 0;
+            StatusBtn.FlatStyle = FlatStyle.Flat;
+            StatusBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            StatusBtn.ForeColor = SystemColors.ControlText;
+            StatusBtn.Location = new Point(20, 388);
+            StatusBtn.Name = "StatusBtn";
+            StatusBtn.Size = new Size(260, 60);
+            StatusBtn.TabIndex = 37;
+            StatusBtn.Text = "Status";
+            StatusBtn.UseVisualStyleBackColor = false;
             // 
             // LogOutBtn
             // 
@@ -98,6 +117,24 @@
             LogOutBtn.UseVisualStyleBackColor = false;
             LogOutBtn.Click += LogOutBtn_Click;
             // 
+            // InvoicesBtn
+            // 
+            InvoicesBtn.BackColor = Color.Transparent;
+            InvoicesBtn.BackgroundImage = (Image)resources.GetObject("InvoicesBtn.BackgroundImage");
+            InvoicesBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            InvoicesBtn.CausesValidation = false;
+            InvoicesBtn.Cursor = Cursors.Hand;
+            InvoicesBtn.FlatAppearance.BorderSize = 0;
+            InvoicesBtn.FlatStyle = FlatStyle.Flat;
+            InvoicesBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            InvoicesBtn.ForeColor = SystemColors.ControlText;
+            InvoicesBtn.Location = new Point(20, 318);
+            InvoicesBtn.Name = "InvoicesBtn";
+            InvoicesBtn.Size = new Size(260, 60);
+            InvoicesBtn.TabIndex = 36;
+            InvoicesBtn.Text = "Invoices";
+            InvoicesBtn.UseVisualStyleBackColor = false;
+            // 
             // InfoTXT
             // 
             InfoTXT.AutoSize = true;
@@ -109,6 +146,24 @@
             InfoTXT.Text = "A Project By DiIT 01 - Group 05";
             InfoTXT.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // CustomersBtn
+            // 
+            CustomersBtn.BackColor = Color.Transparent;
+            CustomersBtn.BackgroundImage = (Image)resources.GetObject("CustomersBtn.BackgroundImage");
+            CustomersBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            CustomersBtn.CausesValidation = false;
+            CustomersBtn.Cursor = Cursors.Hand;
+            CustomersBtn.FlatAppearance.BorderSize = 0;
+            CustomersBtn.FlatStyle = FlatStyle.Flat;
+            CustomersBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            CustomersBtn.ForeColor = SystemColors.ControlText;
+            CustomersBtn.Location = new Point(20, 248);
+            CustomersBtn.Name = "CustomersBtn";
+            CustomersBtn.Size = new Size(260, 60);
+            CustomersBtn.TabIndex = 35;
+            CustomersBtn.Text = "Customers";
+            CustomersBtn.UseVisualStyleBackColor = false;
+            // 
             // LogoTXT
             // 
             LogoTXT.AutoSize = true;
@@ -118,6 +173,24 @@
             LogoTXT.Size = new Size(198, 50);
             LogoTXT.TabIndex = 1;
             LogoTXT.Text = "Car Parking \r\nManagement System";
+            // 
+            // EmployeesBtn
+            // 
+            EmployeesBtn.BackColor = Color.Transparent;
+            EmployeesBtn.BackgroundImage = (Image)resources.GetObject("EmployeesBtn.BackgroundImage");
+            EmployeesBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            EmployeesBtn.CausesValidation = false;
+            EmployeesBtn.Cursor = Cursors.Hand;
+            EmployeesBtn.FlatAppearance.BorderSize = 0;
+            EmployeesBtn.FlatStyle = FlatStyle.Flat;
+            EmployeesBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            EmployeesBtn.ForeColor = SystemColors.ControlText;
+            EmployeesBtn.Location = new Point(20, 179);
+            EmployeesBtn.Name = "EmployeesBtn";
+            EmployeesBtn.Size = new Size(260, 60);
+            EmployeesBtn.TabIndex = 34;
+            EmployeesBtn.Text = "Employees";
+            EmployeesBtn.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
@@ -130,82 +203,6 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // StatusBtn
-            // 
-            StatusBtn.BackColor = Color.Transparent;
-            StatusBtn.BackgroundImage = (Image)resources.GetObject("StatusBtn.BackgroundImage");
-            StatusBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            StatusBtn.CausesValidation = false;
-            StatusBtn.Cursor = Cursors.Hand;
-            StatusBtn.FlatAppearance.BorderSize = 0;
-            StatusBtn.FlatStyle = FlatStyle.Flat;
-            StatusBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            StatusBtn.ForeColor = SystemColors.ControlText;
-            StatusBtn.Location = new Point(20, 318);
-            StatusBtn.Name = "StatusBtn";
-            StatusBtn.Size = new Size(260, 60);
-            StatusBtn.TabIndex = 15;
-            StatusBtn.Text = "Status";
-            StatusBtn.UseVisualStyleBackColor = false;
-            StatusBtn.Click += StatusBtn_Click;
-            // 
-            // InvoicesBtn
-            // 
-            InvoicesBtn.BackColor = Color.Transparent;
-            InvoicesBtn.BackgroundImage = (Image)resources.GetObject("InvoicesBtn.BackgroundImage");
-            InvoicesBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            InvoicesBtn.CausesValidation = false;
-            InvoicesBtn.Cursor = Cursors.Hand;
-            InvoicesBtn.FlatAppearance.BorderSize = 0;
-            InvoicesBtn.FlatStyle = FlatStyle.Flat;
-            InvoicesBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            InvoicesBtn.ForeColor = SystemColors.ControlText;
-            InvoicesBtn.Location = new Point(20, 388);
-            InvoicesBtn.Name = "InvoicesBtn";
-            InvoicesBtn.Size = new Size(260, 60);
-            InvoicesBtn.TabIndex = 14;
-            InvoicesBtn.Text = "Invoices";
-            InvoicesBtn.UseVisualStyleBackColor = false;
-            InvoicesBtn.Click += InvoicesBtn_Click;
-            // 
-            // CustomersBtn
-            // 
-            CustomersBtn.BackColor = Color.Transparent;
-            CustomersBtn.BackgroundImage = (Image)resources.GetObject("CustomersBtn.BackgroundImage");
-            CustomersBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            CustomersBtn.CausesValidation = false;
-            CustomersBtn.Cursor = Cursors.Hand;
-            CustomersBtn.FlatAppearance.BorderSize = 0;
-            CustomersBtn.FlatStyle = FlatStyle.Flat;
-            CustomersBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CustomersBtn.ForeColor = SystemColors.ControlText;
-            CustomersBtn.Location = new Point(20, 248);
-            CustomersBtn.Name = "CustomersBtn";
-            CustomersBtn.Size = new Size(260, 60);
-            CustomersBtn.TabIndex = 13;
-            CustomersBtn.Text = "Customers";
-            CustomersBtn.UseVisualStyleBackColor = false;
-            CustomersBtn.Click += CustomersBtn_Click;
-            // 
-            // VehiclesBtn
-            // 
-            VehiclesBtn.BackColor = Color.Transparent;
-            VehiclesBtn.BackgroundImage = (Image)resources.GetObject("VehiclesBtn.BackgroundImage");
-            VehiclesBtn.BackgroundImageLayout = ImageLayout.Stretch;
-            VehiclesBtn.CausesValidation = false;
-            VehiclesBtn.Cursor = Cursors.Hand;
-            VehiclesBtn.FlatAppearance.BorderSize = 0;
-            VehiclesBtn.FlatStyle = FlatStyle.Flat;
-            VehiclesBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            VehiclesBtn.ForeColor = SystemColors.ControlText;
-            VehiclesBtn.Location = new Point(20, 179);
-            VehiclesBtn.Name = "VehiclesBtn";
-            VehiclesBtn.Size = new Size(260, 60);
-            VehiclesBtn.TabIndex = 12;
-            VehiclesBtn.Text = "Vehicles";
-            VehiclesBtn.UseVisualStyleBackColor = false;
-            VehiclesBtn.Click += VehiclesBtn_Click;
-            // 
             // DashboardBtn
             // 
             DashboardBtn.BackColor = Color.Transparent;
@@ -215,15 +212,14 @@
             DashboardBtn.Cursor = Cursors.Hand;
             DashboardBtn.FlatAppearance.BorderSize = 0;
             DashboardBtn.FlatStyle = FlatStyle.Flat;
-            DashboardBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DashboardBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             DashboardBtn.ForeColor = SystemColors.ControlText;
             DashboardBtn.Location = new Point(20, 110);
             DashboardBtn.Name = "DashboardBtn";
             DashboardBtn.Size = new Size(260, 60);
-            DashboardBtn.TabIndex = 11;
+            DashboardBtn.TabIndex = 33;
             DashboardBtn.Text = "Dashboard";
             DashboardBtn.UseVisualStyleBackColor = false;
-            DashboardBtn.Click += DashboardBtn_Click;
             // 
             // FTitleTXT
             // 
@@ -271,7 +267,7 @@
             // 
             NameTxt.BorderStyle = BorderStyle.None;
             NameTxt.Font = new Font("Segoe UI", 14.25F);
-            NameTxt.Location = new Point(898, 312);
+            NameTxt.Location = new Point(898, 331);
             NameTxt.Name = "NameTxt";
             NameTxt.Size = new Size(195, 26);
             NameTxt.TabIndex = 16;
@@ -286,9 +282,9 @@
             EditEmpBtn.FlatStyle = FlatStyle.Flat;
             EditEmpBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             EditEmpBtn.ForeColor = Color.White;
-            EditEmpBtn.Location = new Point(843, 474);
+            EditEmpBtn.Location = new Point(842, 481);
             EditEmpBtn.Name = "EditEmpBtn";
-            EditEmpBtn.Size = new Size(244, 53);
+            EditEmpBtn.Size = new Size(234, 53);
             EditEmpBtn.TabIndex = 15;
             EditEmpBtn.Text = "   Edit Employee";
             EditEmpBtn.UseVisualStyleBackColor = false;
@@ -330,7 +326,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(250, 238, 209);
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label1.Location = new Point(824, 312);
+            label1.Location = new Point(824, 331);
             label1.Name = "label1";
             label1.Size = new Size(74, 25);
             label1.TabIndex = 18;
@@ -341,7 +337,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.FromArgb(250, 238, 209);
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label4.Location = new Point(824, 387);
+            label4.Location = new Point(824, 406);
             label4.Name = "label4";
             label4.Size = new Size(91, 25);
             label4.TabIndex = 19;
@@ -352,7 +348,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.FromArgb(250, 238, 209);
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label5.Location = new Point(824, 428);
+            label5.Location = new Point(824, 447);
             label5.Name = "label5";
             label5.Size = new Size(118, 25);
             label5.TabIndex = 19;
@@ -362,7 +358,7 @@
             // 
             ContactNTxt.BorderStyle = BorderStyle.None;
             ContactNTxt.Font = new Font("Segoe UI", 14.25F);
-            ContactNTxt.Location = new Point(921, 386);
+            ContactNTxt.Location = new Point(921, 405);
             ContactNTxt.Name = "ContactNTxt";
             ContactNTxt.Size = new Size(172, 26);
             ContactNTxt.TabIndex = 16;
@@ -371,7 +367,7 @@
             // 
             LicenseTxt.BorderStyle = BorderStyle.None;
             LicenseTxt.Font = new Font("Segoe UI", 14.25F);
-            LicenseTxt.Location = new Point(948, 427);
+            LicenseTxt.Location = new Point(948, 446);
             LicenseTxt.Name = "LicenseTxt";
             LicenseTxt.Size = new Size(145, 26);
             LicenseTxt.TabIndex = 16;
@@ -381,7 +377,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(250, 238, 209);
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label2.Location = new Point(824, 274);
+            label2.Location = new Point(824, 259);
             label2.Name = "label2";
             label2.Size = new Size(133, 25);
             label2.TabIndex = 18;
@@ -392,7 +388,7 @@
             PickCus.FlatStyle = FlatStyle.Flat;
             PickCus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PickCus.FormattingEnabled = true;
-            PickCus.Location = new Point(970, 271);
+            PickCus.Location = new Point(970, 256);
             PickCus.Name = "PickCus";
             PickCus.Size = new Size(123, 29);
             PickCus.TabIndex = 32;
@@ -401,7 +397,7 @@
             // 
             EmailTxt.BorderStyle = BorderStyle.None;
             EmailTxt.Font = new Font("Segoe UI", 14.25F);
-            EmailTxt.Location = new Point(898, 349);
+            EmailTxt.Location = new Point(898, 368);
             EmailTxt.Name = "EmailTxt";
             EmailTxt.Size = new Size(195, 26);
             EmailTxt.TabIndex = 16;
@@ -411,11 +407,25 @@
             label6.AutoSize = true;
             label6.BackColor = Color.FromArgb(250, 238, 209);
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label6.Location = new Point(824, 349);
+            label6.Location = new Point(824, 368);
             label6.Name = "label6";
             label6.Size = new Size(69, 25);
             label6.TabIndex = 18;
             label6.Text = "Email :";
+            // 
+            // FetchInfoBtn
+            // 
+            FetchInfoBtn.BackgroundImage = (Image)resources.GetObject("FetchInfoBtn.BackgroundImage");
+            FetchInfoBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            FetchInfoBtn.FlatAppearance.BorderSize = 0;
+            FetchInfoBtn.FlatStyle = FlatStyle.Flat;
+            FetchInfoBtn.Location = new Point(921, 292);
+            FetchInfoBtn.Name = "FetchInfoBtn";
+            FetchInfoBtn.Size = new Size(103, 33);
+            FetchInfoBtn.TabIndex = 33;
+            FetchInfoBtn.Text = "    Fetch";
+            FetchInfoBtn.UseVisualStyleBackColor = true;
+            FetchInfoBtn.Click += FetchInfoBtn_Click;
             // 
             // EditEmployee
             // 
@@ -423,6 +433,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(253, 247, 228);
             ClientSize = new Size(1264, 681);
+            Controls.Add(FetchInfoBtn);
             Controls.Add(PickCus);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -475,14 +486,15 @@
         private Label label5;
         private TextBox ContactNTxt;
         private TextBox LicenseTxt;
-        private Button StatusBtn;
-        private Button InvoicesBtn;
-        private Button CustomersBtn;
-        private Button VehiclesBtn;
-        private Button DashboardBtn;
         private Label label2;
         private ComboBox PickCus;
         private TextBox EmailTxt;
         private Label label6;
+        private Button StatusBtn;
+        private Button InvoicesBtn;
+        private Button CustomersBtn;
+        private Button EmployeesBtn;
+        private Button DashboardBtn;
+        private Button FetchInfoBtn;
     }
 }

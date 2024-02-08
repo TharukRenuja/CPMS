@@ -49,5 +49,10 @@ namespace CPMS
             About about = new About();
             about.Show();
         }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

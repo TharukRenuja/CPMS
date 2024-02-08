@@ -46,7 +46,6 @@
             label1 = new Label();
             B2ResBtn = new Button();
             LicenseTxt = new TextBox();
-            ContactNTxt = new TextBox();
             NameTxt = new TextBox();
             ReserveSpotBtn = new Button();
             label3 = new Label();
@@ -57,6 +56,7 @@
             PickSpot = new ComboBox();
             PickTime = new DateTimePicker();
             label7 = new Label();
+            ContactNTxt = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FTitle).BeginInit();
@@ -310,15 +310,6 @@
             LicenseTxt.Size = new Size(145, 26);
             LicenseTxt.TabIndex = 24;
             // 
-            // ContactNTxt
-            // 
-            ContactNTxt.BorderStyle = BorderStyle.None;
-            ContactNTxt.Font = new Font("Segoe UI", 14.25F);
-            ContactNTxt.Location = new Point(934, 330);
-            ContactNTxt.Name = "ContactNTxt";
-            ContactNTxt.Size = new Size(172, 26);
-            ContactNTxt.TabIndex = 25;
-            // 
             // NameTxt
             // 
             NameTxt.BorderStyle = BorderStyle.None;
@@ -431,6 +422,16 @@
             label7.TabIndex = 33;
             label7.Text = "(For Customers)";
             // 
+            // ContactNTxt
+            // 
+            ContactNTxt.FlatStyle = FlatStyle.Flat;
+            ContactNTxt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ContactNTxt.FormattingEnabled = true;
+            ContactNTxt.Location = new Point(930, 328);
+            ContactNTxt.Name = "ContactNTxt";
+            ContactNTxt.Size = new Size(176, 29);
+            ContactNTxt.TabIndex = 31;
+            // 
             // VehicleReserveCUS
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -439,6 +440,7 @@
             ClientSize = new Size(1264, 681);
             Controls.Add(label7);
             Controls.Add(PickTime);
+            Controls.Add(ContactNTxt);
             Controls.Add(PickSpot);
             Controls.Add(label6);
             Controls.Add(label2);
@@ -447,7 +449,6 @@
             Controls.Add(label1);
             Controls.Add(B2ResBtn);
             Controls.Add(LicenseTxt);
-            Controls.Add(ContactNTxt);
             Controls.Add(NameTxt);
             Controls.Add(ReserveSpotBtn);
             Controls.Add(label3);
@@ -489,7 +490,6 @@
         private Label label1;
         private Button B2ResBtn;
         private TextBox LicenseTxt;
-        private TextBox ContactNTxt;
         private TextBox NameTxt;
         private Button ReserveSpotBtn;
         private Label label3;
@@ -500,5 +500,6 @@
         private ComboBox PickSpot;
         private DateTimePicker PickTime;
         private Label label7;
+        private ComboBox ContactNTxt;
     }
 }

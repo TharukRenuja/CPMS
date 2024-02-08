@@ -20,6 +20,7 @@ namespace CPMS
         {
             InitializeComponent();
             GetStatus();
+            LoadVLicense();
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -125,6 +126,30 @@ namespace CPMS
             this.Hide();
             VehicleReserveEMP empReserve = new VehicleReserveEMP();
             empReserve.Show();
+        }
+
+        private void LoadVLicense()
+        {
+            using (SqlConnection connection = new SqlConnection(DBString))
+            {
+                connection.Open();
+
+                string query = "SELECT VLicense FROM Vehicle WHERE OwnerID LIKE 'EMP%'";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            LeaveTXT.Items.Add(reader["VLicense"].ToString());
+                        }
+                    }
+                }
+            }
+
+            LeaveTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            LeaveTXT.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void AddOutBtn_Click(object sender, EventArgs e)

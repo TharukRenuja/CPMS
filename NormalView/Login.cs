@@ -63,5 +63,10 @@ namespace CPMS
             SGuardLogin sGuardLogin = new SGuardLogin();
             sGuardLogin.Show();
         }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

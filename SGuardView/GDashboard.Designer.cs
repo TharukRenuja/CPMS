@@ -80,8 +80,8 @@
             pictureBox3 = new PictureBox();
             pictureBox11 = new PictureBox();
             label18 = new Label();
-            LeaveTXT = new TextBox();
             pictureBox12 = new PictureBox();
+            LeaveTXT = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FTitle).BeginInit();
@@ -746,16 +746,6 @@
             label18.TabIndex = 37;
             label18.Text = "Leave (Enter License No) :";
             // 
-            // LeaveTXT
-            // 
-            LeaveTXT.BorderStyle = BorderStyle.None;
-            LeaveTXT.Cursor = Cursors.IBeam;
-            LeaveTXT.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LeaveTXT.Location = new Point(951, 515);
-            LeaveTXT.Name = "LeaveTXT";
-            LeaveTXT.Size = new Size(160, 22);
-            LeaveTXT.TabIndex = 38;
-            // 
             // pictureBox12
             // 
             pictureBox12.BackColor = Color.FromArgb(187, 171, 140);
@@ -766,6 +756,16 @@
             pictureBox12.Size = new Size(270, 57);
             pictureBox12.TabIndex = 35;
             pictureBox12.TabStop = false;
+            // 
+            // LeaveTXT
+            // 
+            LeaveTXT.FlatStyle = FlatStyle.Flat;
+            LeaveTXT.Font = new Font("Segoe UI", 10F);
+            LeaveTXT.FormattingEnabled = true;
+            LeaveTXT.Location = new Point(951, 514);
+            LeaveTXT.Name = "LeaveTXT";
+            LeaveTXT.Size = new Size(160, 25);
+            LeaveTXT.TabIndex = 39;
             // 
             // GDashboard
             // 
@@ -894,7 +894,7 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox11;
         private Label label18;
-        private TextBox LeaveTXT;
         private PictureBox pictureBox12;
+        private ComboBox LeaveTXT;
     }
 }

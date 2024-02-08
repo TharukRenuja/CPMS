@@ -42,6 +42,7 @@
             FTitle = new PictureBox();
             Title = new Label();
             StatusDView = new DataGridView();
+            ExitBtn = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FTitle).BeginInit();
@@ -51,6 +52,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(222, 208, 182);
+            panel1.Controls.Add(ExitBtn);
             panel1.Controls.Add(HomeBtn);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(AboutBtn);
@@ -243,6 +245,24 @@
             StatusDView.Size = new Size(870, 530);
             StatusDView.TabIndex = 36;
             // 
+            // ExitBtn
+            // 
+            ExitBtn.BackColor = Color.Transparent;
+            ExitBtn.BackgroundImage = (Image)resources.GetObject("ExitBtn.BackgroundImage");
+            ExitBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            ExitBtn.CausesValidation = false;
+            ExitBtn.Cursor = Cursors.Hand;
+            ExitBtn.FlatAppearance.BorderSize = 0;
+            ExitBtn.FlatStyle = FlatStyle.Flat;
+            ExitBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ExitBtn.ForeColor = Color.White;
+            ExitBtn.Location = new Point(20, 580);
+            ExitBtn.Name = "ExitBtn";
+            ExitBtn.Size = new Size(260, 60);
+            ExitBtn.TabIndex = 12;
+            ExitBtn.Text = "Exit";
+            ExitBtn.UseVisualStyleBackColor = false;
+            // 
             // Status
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -283,5 +303,6 @@
         private PictureBox FTitle;
         private Label Title;
         private DataGridView StatusDView;
+        private Button ExitBtn;
     }
 }

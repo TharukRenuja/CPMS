@@ -143,7 +143,8 @@ namespace CPMS
             {
                 connection.Open();
 
-                string query = "SELECT ID, CusID, VLicense, DATE, OutTime, Duration, Amount FROM Invoice";
+                string query = @"SELECT ID, CusID, VLicense, DATE, OutTime, Duration, Amount FROM Invoice
+                                 ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) ASC";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
 
                 adapter.Fill(dataTable);

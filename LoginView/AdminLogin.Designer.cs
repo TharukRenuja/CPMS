@@ -49,6 +49,8 @@
             UNameTxt = new TextBox();
             PWDTxt = new TextBox();
             B2LogBtn = new Button();
+            HidePWDBtn = new Button();
+            ShowPWDBtn = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FTitle).BeginInit();
@@ -329,12 +331,50 @@
             B2LogBtn.UseVisualStyleBackColor = false;
             B2LogBtn.Click += B2LogBtn_Click;
             // 
+            // HidePWDBtn
+            // 
+            HidePWDBtn.BackColor = Color.White;
+            HidePWDBtn.BackgroundImage = (Image)resources.GetObject("HidePWDBtn.BackgroundImage");
+            HidePWDBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            HidePWDBtn.CausesValidation = false;
+            HidePWDBtn.Cursor = Cursors.Hand;
+            HidePWDBtn.FlatAppearance.BorderSize = 0;
+            HidePWDBtn.FlatStyle = FlatStyle.Flat;
+            HidePWDBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            HidePWDBtn.ForeColor = SystemColors.ControlText;
+            HidePWDBtn.Location = new Point(1068, 376);
+            HidePWDBtn.Name = "HidePWDBtn";
+            HidePWDBtn.Size = new Size(25, 25);
+            HidePWDBtn.TabIndex = 49;
+            HidePWDBtn.UseVisualStyleBackColor = false;
+            HidePWDBtn.Click += HidePWDBtn_Click;
+            // 
+            // ShowPWDBtn
+            // 
+            ShowPWDBtn.BackColor = Color.White;
+            ShowPWDBtn.BackgroundImage = (Image)resources.GetObject("ShowPWDBtn.BackgroundImage");
+            ShowPWDBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            ShowPWDBtn.CausesValidation = false;
+            ShowPWDBtn.Cursor = Cursors.Hand;
+            ShowPWDBtn.FlatAppearance.BorderSize = 0;
+            ShowPWDBtn.FlatStyle = FlatStyle.Flat;
+            ShowPWDBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            ShowPWDBtn.ForeColor = SystemColors.ControlText;
+            ShowPWDBtn.Location = new Point(1068, 376);
+            ShowPWDBtn.Name = "ShowPWDBtn";
+            ShowPWDBtn.Size = new Size(25, 25);
+            ShowPWDBtn.TabIndex = 50;
+            ShowPWDBtn.UseVisualStyleBackColor = false;
+            ShowPWDBtn.Click += ShowPWDBtn_Click;
+            // 
             // AdminLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(253, 247, 228);
             ClientSize = new Size(1264, 681);
+            Controls.Add(ShowPWDBtn);
+            Controls.Add(HidePWDBtn);
             Controls.Add(B2LogBtn);
             Controls.Add(PWDTxt);
             Controls.Add(UNameTxt);
@@ -383,5 +423,7 @@
         private TextBox UNameTxt;
         private TextBox PWDTxt;
         private Button B2LogBtn;
+        private Button HidePWDBtn;
+        private Button ShowPWDBtn;
     }
 }

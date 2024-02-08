@@ -90,7 +90,10 @@ namespace CPMS
 
         private string GetlastCusID()
         {
-            string query = "SELECT TOP 1 ID FROM Customer ORDER BY ID DESC";
+            string query = @"SELECT TOP 1 ID
+                             FROM Customer
+                             ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) DESC
+                            ";
 
             using (SqlConnection connection = new SqlConnection(DBString))
             {

@@ -43,7 +43,6 @@
             FTitle = new PictureBox();
             label5 = new Label();
             B2ResBtn = new Button();
-            LicenseTxt = new TextBox();
             ReserveSpotBtn = new Button();
             label3 = new Label();
             pictureBox2 = new PictureBox();
@@ -54,6 +53,7 @@
             PickTime = new DateTimePicker();
             label7 = new Label();
             ResforEMPBtn = new Button();
+            LicenseTxt = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FTitle).BeginInit();
@@ -276,15 +276,6 @@
             B2ResBtn.UseVisualStyleBackColor = false;
             B2ResBtn.Click += B2ResBtn_Click;
             // 
-            // LicenseTxt
-            // 
-            LicenseTxt.BorderStyle = BorderStyle.None;
-            LicenseTxt.Font = new Font("Segoe UI", 14.25F);
-            LicenseTxt.Location = new Point(961, 333);
-            LicenseTxt.Name = "LicenseTxt";
-            LicenseTxt.Size = new Size(145, 26);
-            LicenseTxt.TabIndex = 24;
-            // 
             // ReserveSpotBtn
             // 
             ReserveSpotBtn.BackColor = Color.Transparent;
@@ -406,6 +397,16 @@
             ResforEMPBtn.Text = "Reserve a Spot for Customer";
             ResforEMPBtn.UseVisualStyleBackColor = false;
             // 
+            // LicenseTxt
+            // 
+            LicenseTxt.FlatStyle = FlatStyle.Flat;
+            LicenseTxt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LicenseTxt.FormattingEnabled = true;
+            LicenseTxt.Location = new Point(961, 330);
+            LicenseTxt.Name = "LicenseTxt";
+            LicenseTxt.Size = new Size(145, 29);
+            LicenseTxt.TabIndex = 31;
+            // 
             // VehicleReserveEMP
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -415,12 +416,12 @@
             Controls.Add(ResforEMPBtn);
             Controls.Add(label7);
             Controls.Add(PickTime);
+            Controls.Add(LicenseTxt);
             Controls.Add(PickSpot);
             Controls.Add(label6);
             Controls.Add(label2);
             Controls.Add(label5);
             Controls.Add(B2ResBtn);
-            Controls.Add(LicenseTxt);
             Controls.Add(ReserveSpotBtn);
             Controls.Add(label3);
             Controls.Add(pictureBox2);
@@ -458,7 +459,6 @@
         private Button LogOutBtn;
         private Label label5;
         private Button B2ResBtn;
-        private TextBox LicenseTxt;
         private Button ReserveSpotBtn;
         private Label label3;
         private PictureBox pictureBox2;
@@ -469,5 +469,6 @@
         private DateTimePicker PickTime;
         private Label label7;
         private Button ResforEMPBtn;
+        private ComboBox LicenseTxt;
     }
 }

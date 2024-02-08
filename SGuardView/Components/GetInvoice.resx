@@ -1540,7 +1540,7 @@
   <data name="PrintBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAJalJREFUeF7t3e2SHNWZJ/C+BF+CL4VL8R2s72D5NhGDPQwBC8vLwshyYAQGaYQQ
+        DAAACwwBP0AiyAAAJalJREFUeF7t3e2SHNWZJ/C+BF+CL4VL8R2s72D5NhGDPQwBC8vLwshyYAQGaYQQ
         lhvRsoSEQKIlRmixsRgZO0TE8AEF43XYYX/o1dPdRZVKT2bXW1aePPV7In5jBpUyT75w/nVOvtTWonXp
         7acf+/LG2R/f+eTtk3c+OX33wf/e/8+bZ/c20dVfvbS3/cZPevPx9st7188fW4ts/QAs5r03fnr/wf/e
         2H79JyfPnXji8Xd/8cRjhzHbbZ185fEffP7Rm//ztx+9tbHhnek70L+49u9pu7qQrR+A1Xnvlz+9+8Ar
@@ -1702,6 +1702,23 @@
         evcX//TDX7/xxL9lBwGAbiQde2ey9a9T1iYORuULTbEfVaNgN2IH6F7WwXclW/86ZW3aYA9G5O883kmQ
         ZxW/0nbuxBOPv3fwe+o3tt/4qZfSAKxQ0tF3Jlv/OmVt2hD3H7h79+bZkzGt/v2vps1dW1v/H9IXr7hr
         HfR5AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="B2ResBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAopJREFUaEPtmkGL00AYhnMVPdSDLHha2KOCF/eysBAvPejBKiheVnpdPLgI68WD
+        EQXRJNSL4q0LCmubQr3VtpH+hP6E/Qn9CXHedArd5M1k0nrKzAcPSzvfDOTZjy+TThydGHa9xujcd6dR
+        2JlGwTyOwoX4m5iIvPYZXIx7QUsq2i4gWCz41mSxZcSD8AKORucfd6W2ahEPgpdWsD4QPul/bkt9eiFb
+        BF3QUkbYkRrVEffDLl/Aoouo7q7UycNW8v+koLLRX/iEcoZnH+j3pvPnl38i9S4Dd8zl3ZNPUPHj65tk
+        58b1FDZuOItZt9OQmh3nr9iekKRSVpLFEiksx3TGPd9LJSM2qeasZMDyLLKqxX65RQaVoCfv7d68JNmK
+        LmYU+a64CQZf2GARRZLBnVt7yeMHh0ngHdO5pgLHYkuH53aewCiSnAVtBe2FrWEc/WAO0dqP2c17d6lU
+        Fc+fNulahrGAaDaQ40gIYyJ1sLKDRFu0d9qmEnV597pN1zWFSq3juP2QStTh2tUr4kb6nq5rAGnrmGe+
+        VHL0ZIsWIuayNQ1gVnl7Bx7dP6Qi8U8AB/u3cw8zAFXN1qs7cnuHIyqeoKLp5ncg2ZzTF89ywk3cY497
+        n1rObNhpiA+VT1LQb7N7apb389vlR3VUPMurK5N+eCGuexnTnu+xpDIge10iywHrspvuPs2pK+No7Uel
+        TasarCQCNr7iu/8qzcEjOhuvI6jm3KGt6NUnLFmX3/bH/xyFh7XxoPoOxMJJdxqqmETBGZto0QcOpU51
+        2MrenNJKzgb6C5o5W8zCwMtGmcNY3cAdU0z2rHAVqWAPr89JbdsFjrxElaOl4AW/jbaC9SC99vnShe/q
+        CXacf0A2/Aewq7Y6AAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

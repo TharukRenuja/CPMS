@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CPMS
 {
@@ -19,6 +20,7 @@ namespace CPMS
         public GetInvoice()
         {
             InitializeComponent();
+            GetVLicense();
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -68,6 +70,33 @@ namespace CPMS
             login.Show();
         }
 
+        private void GetVLicense()
+        {
+            GetVLTXT.Items.Clear();
+
+            using (SqlConnection connection = new SqlConnection(DBString))
+            {
+                connection.Open();
+
+                string query = "SELECT VLicense FROM Vehicle WHERE OwnerID LIKE 'CUS%'";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            GetVLTXT.Items.Add(reader["VLicense"].ToString());
+                        }
+                    }
+                }
+            }
+
+            GetVLTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            GetVLTXT.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+
+
         private void GenInvoiceBtn_Click(object sender, EventArgs e)
         {
             string getVLTxt = GetVLTXT.Text;
@@ -78,7 +107,10 @@ namespace CPMS
 
         private string GetLastInvoiceID()
         {
-            string query = "SELECT TOP 1 ID FROM Invoice ORDER BY ID DESC";
+            string query = @"SELECT TOP 1 ID
+                             FROM Invoice
+                             ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) DESC
+                            ";
 
             using (SqlConnection connection = new SqlConnection(DBString))
             {
@@ -128,13 +160,10 @@ namespace CPMS
                     DateTime dt2 = DateTime.ParseExact(inTime, "HH:mm:ss", new DateTimeFormatInfo());
                     TimeSpan duration = dt1.Subtract(dt2);
 
-                    double ratePerHour = 100.00; // Rate per hour
+                    double ratePerHour = 100.00; // fare for a hour
                     double fare;
 
-                    // Calculate the fare based on the duration and rate
                     fare = duration.TotalHours * ratePerHour;
-
-                    // Ensure the fare is a decimal(10,2) value
                     decimal Ffare = (decimal)fare;
 
                     string invID = GenerateNextInvoiceID();
@@ -174,7 +203,8 @@ namespace CPMS
                     removeVehicleCommand.ExecuteNonQuery();
 
                     DisplaySummary(outTime, inTime, vLicense, duration, Ffare, invID);
-                    GetVLTXT.Clear();
+                    GetVLTXT.Items.Clear();
+                    GetVLicense();
                 }
                 else
                 {
@@ -223,6 +253,13 @@ namespace CPMS
             Bitmap bmp = new Bitmap(printBox.Width, printBox.Height);
             printBox.DrawToBitmap(bmp, new Rectangle(0, 0, printBox.Width, printBox.Height));
             e.Graphics.DrawImage(bmp, new Point(100, 100));
+        }
+
+        private void B2ResBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Vehicles vehicles = new Vehicles();
+            vehicles.Show();
         }
     }
 }

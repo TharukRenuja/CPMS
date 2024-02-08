@@ -114,7 +114,8 @@ namespace CPMS
             {
                 connection.Open();
 
-                string query = "SELECT ID FROM Customer";
+                string query = @"SELECT ID FROM Customer
+                                 ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) ASC";
                 SqlCommand command = new SqlCommand(query, connection);
 
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -131,6 +132,37 @@ namespace CPMS
         private void EditCusBtn_Click(object sender, EventArgs e)
         {
             SaveChanges();
+        }
+
+        private void FetchInfoBtn_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT Name, Contact, VLicense FROM Customer WHERE ID = @ID";
+
+            using (SqlConnection connection = new SqlConnection(DBString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ID", PickCus.Text);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    string name = reader["Name"].ToString();
+                    string contact = reader["Contact"].ToString();
+                    string license = reader["VLicense"].ToString();
+
+                    NameTxt.Text = name;
+                    ContactNTxt.Text = contact;
+                    LicenseTxt.Text = license;
+                }
+                else
+                {
+                    MessageBox.Show("Customer not found.");
+                }
+
+                reader.Close();
+            }
         }
     }
 }

@@ -133,6 +133,7 @@ namespace CPMS
                                     FROM 
                                         Status
                                         LEFT JOIN Vehicle ON Status.VehicleID = Vehicle.ID
+                                    ORDER BY CAST(SUBSTRING(Status.ID, 7, LEN(Status.ID)) AS INT) ASC
                                 ";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);

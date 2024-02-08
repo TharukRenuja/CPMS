@@ -76,7 +76,10 @@ namespace CPMS
 
         private string GetlastEMPID()
         {
-            string query = "SELECT TOP 1 ID FROM Employee ORDER BY ID DESC";
+            string query = @"SELECT TOP 1 ID
+                             FROM Employee
+                             ORDER BY CAST(SUBSTRING(ID, 4, LEN(ID)) AS INT) DESC
+                            ";
 
             using (SqlConnection connection = new SqlConnection(DBString))
             {
